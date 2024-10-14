@@ -1,0 +1,66 @@
+
+<div class="container-fluid register">
+    <div class="row">
+        <div  class="col-md-3 register-left">
+            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+            <h3>Welcome</h3>
+            <p>Your perfect find is just a click away!</p>
+            <input (click)="redirectToLogin()" style="margin-top: 70px;"  type="submit"  name="" value="Login"/><br/>
+        </div>
+        <div class="col-md-9 register-right">
+            <!-- <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Signup</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Login</a>
+                </li>
+            </ul> -->
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h3 class="register-heading">Signup</h3>
+                    <div class="row register-form">
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input [(ngModel)]="UserData.FirstName" type="text" class="form-control" id="floatingInput" placeholder="First Name">
+                                <label for="floatingInput">First Name </label>
+                              </div>
+
+                              <div class="form-floating mb-3">
+                                <input [(ngModel)]="UserData.LastName" type="text" class="form-control" id="floatingInput" placeholder="Last Name">
+                                <label for="floatingInput">Last Name </label>
+                              </div>
+
+                              <div class="form-floating mb-3">
+                                <input [(ngModel)]="UserData.EmailOrPhone" type="text" class="form-control" id="floatingInput" placeholder="Email or Phone ">
+                                <label for="floatingInput"> Email or Phone </label>
+                              </div>
+
+                              <div class="form-floating mb-3">
+                                <input [(ngModel)]="UserData.Password" type="text" class="form-control" id="floatingInput" placeholder="Password">
+                                <label for="floatingInput">Password </label>
+                              </div>
+
+                              <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" placeholder="Confirm Password ">
+                                <label for="floatingInput">Confirm Password  </label>
+                              </div>
+                            
+                              
+
+                    
+                        </div>
+                        <div class="col-md-6" style="margin-top: 110px; margin-left: -100px;">
+
+                          
+                            
+                            <input (click)="Submit()" type="submit" class="btnRegister"  value="Register"/>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
