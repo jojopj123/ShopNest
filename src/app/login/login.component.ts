@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from './Services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,8 +8,9 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  emailOrPhone: string = '';
-  password: string = '';
+  EmailOrPhone: string = '';
+  Password: string = '';
+  errorMessage: string | null = null;
   constructor(
     private router : Router,
     private authService: AuthService){
@@ -19,25 +20,27 @@ export class LoginComponent {
   redirectToRegister() {
     this.router.navigate(['']); 
   }
-  login() {
-    debugger;
-    this.authService.login(this.emailOrPhone, this.password).subscribe(
-      (response) => {
-        const token = response.token;
-        console.log('Login successful. Token:', token);
-        // Store the token in local storage or a service
-        localStorage.setItem('jwt', token);
-        
-        // Show success alert
-        alert('Login successful!');
-      },
-      (error) => {
-        console.error('Login failed:', error);
-        
-        // Show error alert
-        alert(`Login failed: ${error.error || 'An error occurred.'}`);
-      }
-    );
+
+onSubmit() {
+  debugger;
+
+  if (!this.EmailOrPhone || !this.Password) {
+    this.errorMessage = 'Email/Phone and Password are required.';
+    return;
+  }
+
+  this.authService.login({ EmailOrPhone: this.EmailOrPhone, Password: this.Password }).subscribe({
+    next: () => {
+      //alert('Login successful!');
+       this.router.navigate(['/HomePage']); 
+    },
+    error: (err: any) => {
+      console.error('Login failed', err);
+      this.errorMessage = 'Login failed. Please check your credentials.';
+      //alert(this.errorMessage); 
+    }
+  });
 }
+
 
 }

@@ -61,10 +61,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ShopNest:build:production"
+              "buildTarget": "ShopNest:build:production"
             },
             "development": {
-              "browserTarget": "ShopNest:build:development"
+              "buildTarget": "ShopNest:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -72,7 +72,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ShopNest:build"
+            "buildTarget": "ShopNest:build"
           }
         },
         "test": {
@@ -85,10 +85,15 @@
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/assets/images"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/style.css",
+              "src/assets/css/normalize.css",
+              "src/assets/css/swiper-bundle.min.css",
+              "src/assets/css/vendor.css"
             ],
             "scripts": []
           }

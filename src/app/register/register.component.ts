@@ -13,8 +13,8 @@ import { Router } from '@angular/router';
 export class RegisterComponent {
   UserData: UserDetails = new UserDetails();
   constructor(
-    private RegisterService: RegisterService,
-    private router : Router){
+    private readonly RegisterService: RegisterService,
+    private readonly router : Router){
 
   }
   async ngOnInit(){  
@@ -22,26 +22,27 @@ export class RegisterComponent {
   }
 
   async GetUserDetails(){
-    await this.RegisterService.GetUserDetails().subscribe((data)=>{
+     this.RegisterService.GetUserDetails().subscribe((data)=>{
       console.log('USER_DETAILS',data);
      
      
     })
     
 }
-async Submit(){
+async Submit() {
   debugger;
-  await this.RegisterService.SaveUser(this.UserData).subscribe((data)=>{
+  this.RegisterService.SaveUser(this.UserData).subscribe((data) => {
     console.log(data);
     let resp = new SaveResponse();
-    resp=data;
-   if( resp.Saved==true){
-    alert("Registered!");
-    // this.router.navigate(['login']);
-   }
-  })
-  
+    resp = data;
+    
+    if (resp.Saved) { 
+      alert("Registered!");
+       //this.router.navigate(['login']);
+    }
+  });
 }
+
 redirectToLogin() {
   this.router.navigate(['/Login']); 
 }
